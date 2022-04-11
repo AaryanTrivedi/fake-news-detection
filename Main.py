@@ -20,12 +20,12 @@ df1['content'] = df1['author'] + ' ' + df1['title']
 
 stemmer = PorterStemmer()
 def stemming(content):
-    stemmed_content = re.sub('[^a-zA-Z]',' ', content) #1
-    stemmed_content = stemmed_content.lower() #2
-    stemmed_content = stemmed_content.split() #3
-    stemmed_content = [stemmer.stem(word) for word in stemmed_content if not word in stopwords.words('english')] #4
-    stemmed_content = ' '.join(stemmed_content) #5
-    return stemmed_content #6
+    stemmed_content = re.sub('[^a-zA-Z]',' ', content)
+    stemmed_content = stemmed_content.lower() 
+    stemmed_content = stemmed_content.split() 
+    stemmed_content = [stemmer.stem(word) for word in stemmed_content if not word in stopwords.words('english')] 
+    stemmed_content = ' '.join(stemmed_content)
+    return stemmed_content
 
 df1['content'] = df1['content'].apply(stemming)
 df1['content'].head()
@@ -47,7 +47,7 @@ X_test_prediction = model.predict(X_test)
 testing_accuracy = accuracy_score(X_test_prediction, y_test)
 print(testing_accuracy)
 
-X_sample = X_test[5]
+X_sample = X_test[1] #Need to create a system that helps us searc
 prediction = model.predict(X_sample)
 if prediction == 0:
     print('The NEWS is Real!')
